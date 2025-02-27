@@ -31,7 +31,6 @@ const Signup = () => {
     };
 
     return (
-        
         <div className="auth-container">
             <h2>Sign Up</h2>
             <form id="signup-form" onSubmit={handleSubmit} encType="multipart/form-data">
@@ -49,7 +48,6 @@ const Signup = () => {
             </p>
             <p id="signup-message">{message}</p>
         </div>
-    
     );
 };
 
