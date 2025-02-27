@@ -3,11 +3,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 80%;
-    width: 100%;
-    display: grid;
-    place-items: center; /* Centers both horizontally and vertically */
-    min-height: 100vh;
+    height: 100%; /* or 100vh */
 }
 
 /* General Styles */
@@ -26,30 +22,12 @@ body {
 /* Auth Container */
 .auth-container {
     background: rgba(255, 255, 255, 0.8);
-    backface-visibility: visible;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 350px;
     text-align: center;
-    height: 600px;
-    margin-top: 20px;
-    
-}
-.auth-container1 {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 320px;
-    text-align: center;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 130px;
-    
+    min-height: 400px;
 }
 
 .auth-container h2 {
@@ -65,13 +43,11 @@ form {
 
 input {
     width: 100%;
-    color: black;
     padding: 10px;
     margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    background-color: #ccc;
 }
 
 input:focus {
