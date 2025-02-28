@@ -7,13 +7,18 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Program from './components/Program';
 import Reviews from './components/Reviews';
+import CarListing from './components/CarListing';
+import CarDetails from './components/CarDetails';
+import Wishlist from './components/Wishlist';
 import Message from './components/Message'; // Or Message, Chatbot, etc.
-import TestBackground from './components/TestBackground'; //TEsting Background
+import TestBackground from './components/TestBackground'; 
+import Footer from './components/Footer';
 // Import other components here (Dashboard, Contact, About, etc.)
 
 function App() {
     return (
         <Router>
+        <div>
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/dashboard" element = {<Dashboard />} />
@@ -22,10 +27,13 @@ function App() {
                 <Route path="/program" element={<Program />} />
                 <Route path="/reviews" element={<Reviews />} />
                 <Route path="/message" element={<Message />} />
+                <Route path="/car-listing" element={<CarListing />} />
+                <Route path="/car-details/:carId" element={<CarDetails />}  />
                 <Route path="/test" element={<TestBackground />} />
-                {/* Add routes for other components here */}
-                {/* Example: <Route path="/dashboard" element={<Dashboard />} /> */}
+                <Route path="/wishlist" element={<Wishlist />} />
             </Routes>
+        </div>
+        <Footer />
         </Router>
     );
 }

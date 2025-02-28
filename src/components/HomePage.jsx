@@ -2,49 +2,69 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/Homepage.css'; // Ensure correct path
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faCommentAlt } from '@fortawesome/free-solid-svg-icons';
-import Message from './Message'; // Import chatbot component
+import { faChevronDown, faCommentAlt, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'; // Icons
+import Message from './Message'; 
+import { FaHeart } from 'react-icons/fa';
+import { fetchWishlist } from '../js/Car';
 
 const HomePage = () => {
     const navigate = useNavigate();
     const [isMessageCardOpen, setIsMessageCardOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [wishlistCount, setWishlistCount] = useState(0);
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu dropdown
 
     useEffect(() => {
-        // Check if user is logged in
-        const token = localStorage.getItem('token'); // Adjust based on your auth system
+        const loadWishlist = async () => {
+            const wishlist = await fetchWishlist();
+            setWishlistCount(wishlist.length);
+        };
+        loadWishlist();
+    }, []);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
         setIsLoggedIn(!!token);
     }, []);
 
-    const showCarListings = () => navigate('/car-listings');
-
+    const showCarListings = () => navigate('/car-listing');
     const toggleMessageCard = () => setIsMessageCardOpen(!isMessageCardOpen);
-
     const handleLogout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
         navigate('/');
     };
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen); // Toggle menu function
 
     return (
         <>
             {/* Navbar */}
             <nav className="navbar">
                 <Link to="/" className="logo">HotWheelsHQ</Link>
-                <div className="menus">
+
+                {/* Hamburger Menu Icon */}
+                <div className="menu-icon" onClick={toggleMenu}>
+                    <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+                </div>
+
+                {/* Menu Links - Dropdown Style */}
+                <div className={`menus ${isMenuOpen ? "active" : ""}`}>
                     <Link to="/program">Program</Link>
                     <Link to="/reviews">Reviews</Link>
                     <Link to="/contact">Contact Us</Link>
                     <Link to="/about">About Us</Link>
+                    <Link to="/wishlist" className="wishlist-icon">
+                        <FaHeart /> <span>{wishlistCount}</span>
+                    </Link>
+                    {!isLoggedIn ? (
+                        <Link to="/signup" className="signup">Sign Up</Link>
+                    ) : (
+                        <>
+                            <Link to="/dashboard" className="dashboard">Dashboard</Link>
+                            <button className="logout" onClick={handleLogout}>Logout</button>
+                        </>
+                    )}
                 </div>
-                {!isLoggedIn ? (
-                    <Link to="/signup" className="signup">Sign Up</Link>
-                ) : (
-                    <>
-                        <Link to="/dashboard" className="dashboard">Dashboard</Link>
-                        <button className="logout" onClick={handleLogout}>Logout</button>
-                    </>
-                )}
             </nav>
 
             {/* Main Content */}

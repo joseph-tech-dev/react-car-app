@@ -3,17 +3,19 @@
     margin: 0;
     padding: 0;
 }
-/*
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-
-}*/
 body {
     background-image: url('../images/program.jpg');
     background-size: cover;
     background-position: center;
+}
+.home {
+    font-size: 30px;
+    padding-left: 10px;
+    text-decoration: underline;
+} 
+
+.home:hover {
+    color: red;
 }
 
 .overlay {
@@ -36,7 +38,6 @@ body {
 .container {
     max-width: 800px;
     margin: 20px auto;
-    padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -63,6 +64,7 @@ ol {
 
 .faq {
     margin-top: 20px;
+    margin: 10px;
 }
 
 .faq-item {
@@ -75,6 +77,8 @@ ol {
     color: white;
     padding: 10px;
     border-radius: 5px;
+    margin: 2px;
+    
 }
 
 .faq-answer {
@@ -84,6 +88,27 @@ ol {
     border-radius: 5px;
     margin-top: 5px;
     font-style: italic; /* Setting answer text to italic */
-    line-height: 1.5; /* Optional: improves readability */
+    line-height: 2.0; /* Optional: improves readability */
+}
+.process{
+    margin: 10px;
 }
 
+.process ol {
+    padding-left: 15px;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for Firefox */
+body {
+    scrollbar-width: none;
+}
+
+/* Ensure no overflow causing scroll */
+html, body {
+    overflow: hidden;
+}

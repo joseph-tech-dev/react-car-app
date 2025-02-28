@@ -2,8 +2,6 @@
 
 body, #root {
     font-family: 'Poppins', sans-serif;
-    background: url('/img/img.jpg') no-repeat center center fixed;
-    /*background: url('/img/background.jpg') center/cover no-repeat;*/
     background-size: cover;
     color: #333;
     margin: 0;
@@ -38,6 +36,95 @@ body, #root {
     text-decoration: none;
     color: white;
 }
+
+
+// start
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: black;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.menus {
+    display: flex;
+    gap: 20px;
+}
+
+/* Normal menu links */
+.menus a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.menus a:hover {
+    color: yellow;
+}
+
+/* Hide menu by default on small screens */
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Responsive Navbar - Dropdown Menu */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .menus {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        background-color: black;
+        width: 200px;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .menus.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menus a {
+        padding: 8px 0;
+        font-size: 14px;
+        display: block;
+    }
+}
+
+
+//stop
+
+
+
+
+
+
+
 
 .menus a {
     text-decoration: none;
@@ -188,7 +275,7 @@ select {
 .message-card {
     position: absolute;
     bottom: 90px;
-    right: 30px;
+    right: 16px;
     width: 350px;
     height: 350px;
     background: white;

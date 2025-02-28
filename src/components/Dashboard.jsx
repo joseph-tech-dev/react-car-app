@@ -23,7 +23,7 @@ const Dashboard = () => {
     }, []);
 
     const showCarListings = () => {
-        navigate('/car-listings');
+        navigate('/car-listing');
     };
 
     const toggleMessageCard = () => {

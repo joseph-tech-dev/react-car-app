@@ -1,23 +1,8 @@
 /* AuthComponent.css */
 
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%; /* or 100vh */
-}
 
 /* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background: url('../images/img.jpg') no-repeat center center fixed;
-    background-size: cover;
-    background-position: center;
-    background-color: #f0f4f8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+
 
 /* Auth Container */
 .auth-container {
@@ -28,7 +13,14 @@ body {
     width: 350px;
     text-align: center;
     min-height: 400px;
+
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
 
 .auth-container h2 {
     color: #007bff;
@@ -48,6 +40,8 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    background: white;
+    color: black;
 }
 
 input:focus {
@@ -66,7 +60,7 @@ input[type="file"] {
 
 /* Submit Button */
 button {
-    background-color: #007bff;
+    background-color: #007bff !important ;
     color: white;
     border: none;
     padding: 12px;
