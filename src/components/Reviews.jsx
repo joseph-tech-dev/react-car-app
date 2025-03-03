@@ -1,5 +1,5 @@
-// Reviews.jsx
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../css/Review.css';
 
 const Reviews = () => {
@@ -18,9 +18,8 @@ const Reviews = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await fetch(API_BASE_URL, { credentials: 'include' });
-                const data = await response.json();
-                setReviews(data);
+                const response = await axios.get(API_BASE_URL, { withCredentials: true });
+                setReviews(response.data);
             } catch (error) {
                 console.error('Error fetching reviews:', error);
             }
@@ -34,41 +33,26 @@ const Reviews = () => {
         const csrfToken = getCSRFTokenFromCookie();
 
         try {
-            const response = await fetch(API_BASE_URL, {
-                method: 'POST',
-                credentials: "include",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken,
-                },
-                body: JSON.stringify({
-                    review: reviewText,
-                    rating: reviewRating,
-                }),
-            });
+            await axios.post(
+                API_BASE_URL,
+                { review: reviewText, rating: reviewRating },
+                {
+                    headers: { 'X-CSRFToken': csrfToken },
+                    withCredentials: true
+                }
+            );
 
-            if (response.ok) {
-                alert("Thank you for your review!");
-                setReviewText('');
-                setReviewRating('1');
-                setShowForm(false);
-                // Refetch reviews
-                const fetchReviews = async () => {
-                    try {
-                        const response = await fetch(API_BASE_URL, { credentials: 'include' });
-                        const data = await response.json();
-                        setReviews(data);
-                    } catch (error) {
-                        console.error('Error fetching reviews:', error);
-                    }
-                };
-                fetchReviews();
-            } else {
-                alert("Error submitting your review. Please try again.");
-            }
+            alert("Thank you for your review!");
+            setReviewText('');
+            setReviewRating('1');
+            setShowForm(false);
+
+            // Refetch reviews after submitting
+            const response = await axios.get(API_BASE_URL, { withCredentials: true });
+            setReviews(response.data);
         } catch (error) {
-            console.error("Submission error:", error);
-            alert("Network error. Please try again later.");
+            console.error("Error submitting review:", error);
+            alert("Error submitting your review. Please try again.");
         }
     };
 
@@ -78,10 +62,19 @@ const Reviews = () => {
             <div className="reviews-container" id="reviews-container">
                 {reviews.map((review) => (
                     <div className="review-card" key={review.id}>
-                        <img src="img.v.jpg" alt={review.user} />
+                        <img 
+                            src={review.profile_image || "http://127.0.0.1:8000/media/default_profile.jpg"} 
+                            alt={review.user} 
+                            className="profile-pic"
+                        />
                         <div>
                             <div className="reviewer-info">
-                                {review.user} <span className="rating">★ ★ ★ ★ ★</span>
+                                {review.user} 
+                                <span className="rating">
+                                    {Array.from({ length: review.rating }).map((_, index) => (
+                                        <span key={index}>★</span>
+                                    ))}
+                                </span>
                             </div>
                             <div className="review-text">"{review.review}"</div>
                         </div>

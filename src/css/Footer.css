@@ -1,7 +1,11 @@
+/* Footer stays at the bottom */
 .footer {
-  background-color: black;
-  color: white;
-  padding: 30px 20px;
+    background-color: black;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to bottom */
 }
 @media (max-width: 768px) {
     .footer {
@@ -48,3 +52,4 @@
   padding-top: 5px;
   border-top: 1px solid #444;
 }
+

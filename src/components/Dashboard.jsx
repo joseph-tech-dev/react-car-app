@@ -43,15 +43,11 @@ const Dashboard = () => {
                 <div className="menus">
                     <Link to="/program">Program</Link>
                     <Link to="/reviews">Reviews</Link>
-                    <Link to="/contact">Contact Us</Link>
+                    <Link to="/contactus">Contact Us</Link>
                     <Link to="/about">About Us</Link>
+                    {/* LOGOUT */}
+                    <Link to="/signup" className="signup">Sign up</Link>
                 </div>
-                {isLoggedIn && (
-                    <>
-                        <a href="#" id="logout-btn" className="logout" onClick={handleLogout}>Logout</a>
-                        <Link to="/dashboard" id="dashboard-link" className="dashboard">Dashboard</Link>
-                    </>
-                )}
             </nav>
 
             <div className="main-content">
@@ -59,7 +55,7 @@ const Dashboard = () => {
                     <div className="headerdesc">
                         <div className="title"><span>Your</span> Next <br />Car <span>Awaits</span></div>
                         <p>Welcome to HotWheelsHQ, your ultimate online destination for buying and selling cars!</p>
-                        <button className="headerbutton" onClick={showCarListings}>Find Your Ride</button>
+                        <button className="headerbutton" onClick={showCarListings}>Find Your Ride Dh</button>
                     </div>
 
                     <div className="message-icon" onClick={toggleMessageCard}>

@@ -28,7 +28,7 @@ const CarListing = () => {
 
     return (
       <>
-      <Link to="/" className="home"><FaArrowLeft size={12} />home</Link>
+      <Link to="/" className="home"><FaArrowLeft size={24} /></Link>
         <div className="car-listing">
             {cars.map(car => (
                     <Link to={`/car-details/${car.car_id}`} key={car.car_id} className="car-card-link">

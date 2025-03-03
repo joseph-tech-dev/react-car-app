@@ -51,19 +51,13 @@ const HomePage = () => {
                 <div className={`menus ${isMenuOpen ? "active" : ""}`}>
                     <Link to="/program">Program</Link>
                     <Link to="/reviews">Reviews</Link>
-                    <Link to="/contact">Contact Us</Link>
+                    <Link to="/contactus">Contact Us</Link>
                     <Link to="/about">About Us</Link>
-                    <Link to="/wishlist" className="wishlist-icon">
-                        <FaHeart /> <span>{wishlistCount}</span>
+                    <Link to="/wishlist" >
+                        <div ><FaHeart /> {wishlistCount}</div>
                     </Link>
-                    {!isLoggedIn ? (
-                        <Link to="/signup" className="signup">Sign Up</Link>
-                    ) : (
-                        <>
-                            <Link to="/dashboard" className="dashboard">Dashboard</Link>
-                            <button className="logout" onClick={handleLogout}>Logout</button>
-                        </>
-                    )}
+                    {/* LOGOUT */}
+                    <Link to="/" className="signup">Logout</Link>
                 </div>
             </nav>
 

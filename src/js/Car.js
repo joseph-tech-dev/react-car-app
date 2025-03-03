@@ -34,7 +34,7 @@ export const fetchCarDetails = async (carId) => {
     }
 };
 
-/*
+
 
 // Add car to wishlist
 export const addToWishlist = async (carId) => {
@@ -72,7 +72,7 @@ export const removeFromWishlist = async (wishlistId) => {
     }
 };
 
-*/
+/*
 
 // Add car to wishlist (No Authentication)
 export const addToWishlist = async (carId) => {
@@ -103,5 +103,20 @@ export const removeFromWishlist = async (wishlistId) => {
         await axios.delete(`${BASE_URL}/wishlist/${wishlistId}/`);
     } catch (error) {
         console.error("Error removing from wishlist:", error);
+    }
+};
+*/
+
+
+//Contact [Send Email]
+export const sendMessage = async (data) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/contact/`, data, {
+            headers: { 'Content-Type': 'application/json' }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error sending message:', error);
+        throw error;
     }
 };

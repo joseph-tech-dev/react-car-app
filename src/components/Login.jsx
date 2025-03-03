@@ -15,7 +15,7 @@ const Login = () => {
         try {
             await login(username, password); // Call your login function
             setMessage('Login successful!');
-            navigate('/'); // Redirect to homepage after successful login
+            navigate('/dashboard'); // Redirect to dashboard after successful login
         } catch (error) {
             setMessage(error.message || 'Login failed.');
         }

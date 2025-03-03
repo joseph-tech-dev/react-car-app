@@ -13,6 +13,7 @@ import Wishlist from './components/Wishlist';
 import Message from './components/Message'; // Or Message, Chatbot, etc.
 import TestBackground from './components/TestBackground'; 
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 // Import other components here (Dashboard, Contact, About, etc.)
 
 function App() {
@@ -20,8 +21,8 @@ function App() {
         <Router>
         <div>
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/dashboard" element = {<Dashboard />} />
+                <Route path="/dashboard" element={<HomePage />} />
+                <Route path="/" element = {<Dashboard />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/program" element={<Program />} />
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/car-details/:carId" element={<CarDetails />}  />
                 <Route path="/test" element={<TestBackground />} />
                 <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/contactus" element={<Contact />} />
             </Routes>
         </div>
         <Footer />

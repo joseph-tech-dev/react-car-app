@@ -132,10 +132,12 @@ body, #root {
     margin: 0 15px;
     font-weight: 500;
     transition: color 0.3s;
+    padding: 8px 15px;
 }
 
 .menus a:hover {
     color: #0056b3;
+    font-size: 16px;
 }
 
 .signup, .dashboard, .logout {
@@ -148,7 +150,8 @@ body, #root {
 }
 
 .signup:hover, .dashboard:hover, .logout:hover {
-    background-color: #0056b3;
+    color: white;
+    font-size: 16px;
 }
 
 .main-content {
@@ -303,4 +306,10 @@ select {
     font-size: 10px;
     font-weight: bold;
     /*margin-left: auto;  Moves the button to the left */
+
+
+
+.wishlist-icon-heart {
+    color: black;
+    margin-top: 10px; /* Adjust padding as needed */
 }

@@ -36,7 +36,7 @@
 }
 
 .car-info {
-    padding: 16px;
+    padding: 10spx;
     text-align: center;
 }
 
@@ -47,14 +47,14 @@
 }
 
 .car-info p {
-    font-size: 14px;
+    font-size: 10px;
     color: #666;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
     .car-listing {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
@@ -65,7 +65,11 @@
 }
 
 
-/* CarDetails.css */
+
+
+
+
+// CarDetails.css
 .body {
   background: top;
 }
@@ -73,7 +77,7 @@
     max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.15);  /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.8);  /* Glassmorphism Effect */
     backdrop-filter: blur(12px);
     border-radius: 12px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
@@ -107,7 +111,7 @@
     border: none;
     padding: 10px;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 16px;
     border-radius: 50%;
     transition: background 0.3s;
 }
