@@ -13,6 +13,7 @@ const HomePage = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [wishlistCount, setWishlistCount] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu dropdown
+    const [selectedMake, setSelectedMake] = useState("")
 
     useEffect(() => {
         const loadWishlist = async () => {
@@ -35,6 +36,14 @@ const HomePage = () => {
         navigate('/');
     };
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen); // Toggle menu function
+
+    // Handle search submission
+    const handleSearch = (e) => {
+        e.preventDefault(); // Prevent page reload
+        if (selectedMake) {
+            navigate(`/search-cars?make=${encodeURIComponent(selectedMake)}`);
+        }
+    }
 
     return (
         <>
@@ -87,9 +96,14 @@ const HomePage = () => {
                 {/* Car Search Form */}
                 <div className="car-search-form">
                     <h2>Find a Car</h2>
-                    <form>
+                    <form onSubmit={handleSearch}>
                         <div className="form-group">
-                            <select name="make" required>
+                            <select name="make" 
+                                    required
+                                    value= {selectedMake}
+                                    onChange={(e) => setSelectedMake(e.target.value)}
+
+                                    >
                                 <option value="">Select Make</option>
                                 <option value="Toyota">Toyota</option>
                                 <option value="Mercedes Benz">Mercedes Benz</option>

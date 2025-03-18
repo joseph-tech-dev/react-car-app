@@ -28,7 +28,21 @@ const CarListing = () => {
 
     return (
       <>
-      <Link to="/" className="home"><FaArrowLeft size={24} /></Link>
+        <div>
+            
+            <div className="header-content">
+                            <video src="img/car-details.mp4" type="video/mp4"
+                    autoPlay loop muted playsInline objectFit
+                    style={{   
+                        width: "100%",
+                        height : "100%",
+                        objectFit: "cover",
+                        zIndex: "-1",
+
+                    }}
+            ></video>
+            </div>
+        </div>
         <div className="car-listing">
             {cars.map(car => (
                     <Link to={`/car-details/${car.car_id}`} key={car.car_id} className="car-card-link">

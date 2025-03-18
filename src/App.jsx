@@ -14,6 +14,7 @@ import Message from './components/Message'; // Or Message, Chatbot, etc.
 import TestBackground from './components/TestBackground'; 
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import SearchedCars from './components/SearchedCars';
 // Import other components here (Dashboard, Contact, About, etc.)
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/test" element={<TestBackground />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/contactus" element={<Contact />} />
+                <Route path="/search-cars" element={<SearchedCars />} />
             </Routes>
         </div>
         <Footer />

@@ -13,7 +13,7 @@ const Program = () => {
 
     return (
         <>
-        <Link to="/" className="home"><strong><FaArrowLeft size={24} />home</strong></Link>
+        <Link to="/dashboard" className="home"><strong><FaArrowLeft size={24} />home</strong></Link>
         <div className="container">
             <header>
                 <h1>How Our Car Selling Process Works</h1>

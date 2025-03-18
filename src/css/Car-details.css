@@ -1,11 +1,11 @@
   // CarListing.css
-
+}
 .card{
   display: grid;
 }
 .car-listing {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 6fr);
     gap: 16px;
     padding: 20px;
 }
@@ -169,3 +169,12 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
+
+
+.header-content{
+    height:200px;
+    padding: 5px;
+    border-radius: 50%;
+
+
+}

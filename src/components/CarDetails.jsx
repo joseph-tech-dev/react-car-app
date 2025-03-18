@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchCarDetails, fetchCarImages, addToWishlist, removeFromWishlist, fetchWishlist } from "../js/Car";
+import { 
+    fetchCarDetails, 
+    fetchCarImages, 
+    addToWishlist, 
+    removeFromWishlist, 
+    fetchWishlist, 
+    getUserProfile 
+} from "../js/Car";
+import { FaArrowLeft } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import "../css/Car-details.css";
 
 const CarDetails = () => {
@@ -10,6 +19,7 @@ const CarDetails = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [inWishlist, setInWishlist] = useState(false);
     const [wishlistId, setWishlistId] = useState(null);
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
         const getCarData = async () => {
@@ -21,11 +31,16 @@ const CarDetails = () => {
         };
 
         const checkWishlist = async () => {
-            const wishlist = await fetchWishlist();
-            const item = wishlist.find(item => item.car.car_id === carId);
-            if (item) {
-                setInWishlist(true);
-                setWishlistId(item.id);
+            const user_id = await getUserProfile(); 
+            setUserId(user_id);
+
+            if (user_id) {
+                const wishlist = await fetchWishlist();
+                const item = wishlist.find(item => item.car.id === parseInt(carId));
+                if (item) {
+                    setInWishlist(true);
+                    setWishlistId(item.id);
+                }
             }
         };
 
@@ -34,13 +49,20 @@ const CarDetails = () => {
     }, [carId]);
 
     const handleWishlist = async () => {
+        if (!userId) {
+            alert("You must be logged in to add to the wishlist.");
+            return;
+        }
+
         if (inWishlist) {
             await removeFromWishlist(wishlistId);
             setInWishlist(false);
         } else {
             const response = await addToWishlist(carId);
-            setInWishlist(true);
-            setWishlistId(response?.id);
+            if (response?.id) {
+                setInWishlist(true);
+                setWishlistId(response.id);
+            }
         }
     };
 
@@ -55,7 +77,9 @@ const CarDetails = () => {
     if (!car) return <p>Loading...</p>;
 
     return (
+
       <div className="body">
+      <Link to="/dashboard" className="home"><FaArrowLeft size={24} /></Link>
         <div className="car-details-container">
             {/* Image Slider with Next/Prev Buttons */}
             {images.length > 0 && (
@@ -84,6 +108,7 @@ const CarDetails = () => {
             </div>
         </div>
       </div>
+    
     );
 };
 
